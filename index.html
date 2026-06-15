@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دار الخياطة | تفصيل وأقمشة فاخرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f2;
+    --ink:#2b2420;
+    --muted:#7a6f64;
+    --gold:#b48a4a;
+    --gold-dark:#8c6a36;
+    --cream:#fff;
+    --line:#e7ddd0;
+    --shadow:0 10px 30px rgba(60,45,25,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Cairo',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+  }
+  h1,h2,h3{font-weight:900;line-height:1.3}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1150px;margin:0 auto;padding:0 22px}
+  .accent{color:var(--gold)}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,242,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:'Amiri',serif;font-size:1.7rem;font-weight:700}
+  .logo span{color:var(--gold)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav a{font-weight:600;color:var(--muted);transition:.2s}
+  nav a:hover{color:var(--gold)}
+  .menu-btn{display:none;font-size:1.6rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+  .lang-switch{display:flex;gap:4px;background:#f1e8da;border:1px solid var(--line);border-radius:30px;padding:3px}
+  .lang-switch button{
+    border:none;background:none;cursor:pointer;font-family:inherit;font-weight:700;
+    font-size:.85rem;color:var(--muted);padding:5px 11px;border-radius:30px;transition:.2s;
+  }
+  .lang-switch button:hover{color:var(--gold-dark)}
+  .lang-switch button.active{background:var(--gold);color:#fff}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:130px 0 140px;
+    text-align:center;
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:url('1.png') center/cover no-repeat;
+    transform-origin:center center;
+    will-change:transform;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(rgba(28,20,14,.62),rgba(28,20,14,.72));
+  }
+  .hero .container{position:relative;z-index:2}
+  .hero .tag{
+    display:inline-block;border:1px solid #f0d9a8;
+    color:#f4e2bd;padding:6px 18px;border-radius:30px;
+    font-size:.9rem;font-weight:600;margin-bottom:24px;
+    background:rgba(0,0,0,.25);
+  }
+  .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:18px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+  .hero .accent{color:#f0cd84}
+  .hero p{max-width:620px;margin:0 auto 32px;color:#eae0d2;font-size:1.15rem}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    padding:14px 32px;border-radius:40px;font-weight:700;font-size:1rem;
+    cursor:pointer;transition:.25s;border:2px solid var(--gold);
+  }
+  .btn-primary{background:var(--gold);color:#fff}
+  .btn-primary:hover{background:var(--gold-dark);border-color:var(--gold-dark)}
+  .btn-ghost{background:transparent;color:var(--gold-dark)}
+  .btn-ghost:hover{background:var(--gold);color:#fff}
+
+  /* Section */
+  section{padding:80px 0}
+  .sec-head{text-align:center;margin-bottom:54px}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+  .sec-head p{color:var(--muted);max-width:540px;margin:0 auto}
+
+  /* Services */
+  .grid{display:grid;gap:24px}
+  .services .grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{
+    background:var(--cream);border:1px solid var(--line);border-radius:18px;
+    padding:34px 28px;box-shadow:var(--shadow);transition:.3s;
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--gold)}
+  .card .ic{font-size:2.4rem;margin-bottom:14px}
+  .card h3{font-size:1.25rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.98rem}
+
+  /* Fabrics */
+  .fabrics{background:linear-gradient(180deg,#fff,#f6efe4)}
+  .fab-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .fab{
+    border-radius:18px;overflow:hidden;background:var(--cream);
+    box-shadow:var(--shadow);transition:.3s;border:1px solid var(--line);
+  }
+  .fab:hover{transform:translateY(-6px)}
+  .swatch{height:140px;position:relative}
+  .swatch::after{
+    content:attr(data-price);position:absolute;bottom:10px;left:10px;
+    background:rgba(255,255,255,.92);color:var(--ink);
+    padding:4px 12px;border-radius:20px;font-size:.82rem;font-weight:700;
+  }
+  .fab-body{padding:20px}
+  .fab-body h3{font-size:1.2rem;margin-bottom:6px}
+  .fab-body p{color:var(--muted);font-size:.92rem}
+
+  /* fabric textures via CSS */
+  .s-cotton{background:repeating-linear-gradient(45deg,#e8e2d6,#e8e2d6 6px,#ded7c8 6px,#ded7c8 12px)}
+  .s-silk{background:linear-gradient(120deg,#d8b4d8,#f0d9ec,#c9a0d0,#e8c8e6)}
+  .s-linen{background:repeating-linear-gradient(0deg,#e6dcc4,#e6dcc4 3px,#dcd0b4 3px,#dcd0b4 6px),repeating-linear-gradient(90deg,#e6dcc4,#e6dcc4 3px,#dcd0b4 3px,#dcd0b4 6px)}
+  .s-wool{background:repeating-linear-gradient(60deg,#9aa3ad,#9aa3ad 4px,#828b96 4px,#828b96 8px)}
+  .s-velvet{background:radial-gradient(circle at 30% 30%,#7a2d4d,#4a1730)}
+  .s-satin{background:linear-gradient(120deg,#c8a24a,#f4e0a0,#b88a2e,#ecd488)}
+  .s-chiffon{background:linear-gradient(135deg,rgba(160,200,220,.6),rgba(220,240,250,.9),rgba(150,190,210,.5))}
+  .s-denim{background:repeating-linear-gradient(45deg,#2f4a6b,#2f4a6b 3px,#3a5878 3px,#3a5878 6px)}
+
+  /* Steps */
+  .steps .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .step{text-align:center;position:relative}
+  .step .num{
+    width:64px;height:64px;border-radius:50%;background:var(--gold);
+    color:#fff;font-size:1.5rem;font-weight:900;display:flex;
+    align-items:center;justify-content:center;margin:0 auto 16px;
+    box-shadow:var(--shadow);
+  }
+  .step h3{font-size:1.15rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.95rem}
+
+  /* Contact */
+  .contact{background:linear-gradient(180deg,#f6efe4,#fff)}
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  form{background:var(--cream);padding:34px;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .field{margin-bottom:18px}
+  label{display:block;font-weight:600;margin-bottom:6px;font-size:.95rem}
+  input,textarea,select{
+    width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:1rem;background:var(--bg);transition:.2s;
+  }
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);background:#fff}
+  .info-item{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start}
+  .info-item .ic{font-size:1.5rem;color:var(--gold)}
+  .info-item h3{font-size:1.05rem;margin-bottom:2px}
+  .info-item p{color:var(--muted);font-size:.95rem}
+  .msg{display:none;background:#e6f4ea;color:#1f7a3d;padding:14px;border-radius:12px;margin-top:14px;font-weight:600;text-align:center}
+
+  /* Footer */
+  footer{background:var(--ink);color:#d8cdbe;padding:40px 0;text-align:center}
+  footer .logo{color:#fff;margin-bottom:10px}
+  footer .social{display:flex;gap:18px;justify-content:center;margin:16px 0;font-size:1.4rem}
+  footer .social a{transition:.2s}
+  footer .social a:hover{color:var(--gold)}
+  footer small{color:#9a8d7c}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    .menu-btn{display:block}
+    .contact-wrap{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo"><span data-i18n="brandA">دار</span> <span class="accent" data-i18n="brandB">الخياطة</span></div>
+    <nav><ul>
+      <li><a href="#services" data-i18n="navServices">خدماتنا</a></li>
+      <li><a href="#fabrics" data-i18n="navFabrics">الأقمشة</a></li>
+      <li><a href="#steps" data-i18n="navSteps">كيف نعمل</a></li>
+      <li><a href="#contact" data-i18n="navContact">تواصل معنا</a></li>
+    </ul></nav>
+    <div class="lang-switch">
+      <button data-lang="ar">ع</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="sv">SV</button>
+    </div>
+    <button class="menu-btn" onclick="document.querySelector('nav ul').style.display='flex'">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <span class="tag" data-i18n="heroTag">✦ تفصيل يدوي بإتقان منذ ١٩٩٥</span>
+    <h1 data-i18n="heroTitle">نخيط لك أناقتك من أفخر <span class="accent">الأقمشة</span></h1>
+    <p data-i18n="heroText">دار خياطة متخصصة في تفصيل الملابس الرجالية والنسائية على المقاس، بأجود أنواع الأقمشة العالمية وأيدٍ ماهرة تهتم بأدق التفاصيل.</p>
+    <div class="btns">
+      <a href="#contact" class="btn btn-primary" data-i18n="heroBtn1">احجز موعدك الآن</a>
+      <a href="#fabrics" class="btn btn-ghost" data-i18n="heroBtn2">تصفّح الأقمشة</a>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="sec-head">
+      <h2 data-i18n="servTitle">خدماتنا</h2>
+      <p data-i18n="servSub">نقدّم خدمات خياطة متكاملة تجمع بين الحرفية التقليدية واللمسة العصرية.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic">🤵</div><h3 data-i18n="serv1t">تفصيل رجالي</h3><p data-i18n="serv1d">بدلات، قمصان، وثياب رسمية مفصّلة على المقاس بأناقة تليق بك.</p></div>
+      <div class="card"><div class="ic">👗</div><h3 data-i18n="serv2t">تفصيل نسائي</h3><p data-i18n="serv2d">فساتين سهرة، عبايات، وملابس يومية بتصاميم حصرية وأنيقة.</p></div>
+      <div class="card"><div class="ic">✂️</div><h3 data-i18n="serv3t">تعديل وإصلاح</h3><p data-i18n="serv3d">تضييق، تقصير، وتعديل المقاسات لتعود ملابسك كأنها جديدة.</p></div>
+      <div class="card"><div class="ic">💍</div><h3 data-i18n="serv4t">أزياء المناسبات</h3><p data-i18n="serv4d">فساتين أفراح وبدلات أعراس بلمسة فاخرة لا تُنسى.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Fabrics -->
+<section id="fabrics" class="fabrics">
+  <div class="container">
+    <div class="sec-head">
+      <h2 data-i18n="fabTitle">أنواع الأقمشة</h2>
+      <p data-i18n="fabSub">تشكيلة واسعة من أرقى الأقمشة المستوردة لتختار ما يناسب ذوقك ومناسبتك.</p>
+    </div>
+    <div class="fab-grid">
+      <div class="fab"><div class="swatch s-cotton" data-price="من ٢٥ ر.س / م" data-i18n-price="pCotton"></div><div class="fab-body"><h3 data-i18n="fCottonT">قطن</h3><p data-i18n="fCottonD">ناعم، مريح، ويسمح بمرور الهواء — مثالي للملابس اليومية والصيفية.</p></div></div>
+      <div class="fab"><div class="swatch s-silk" data-price="من ١٢٠ ر.س / م" data-i18n-price="pSilk"></div><div class="fab-body"><h3 data-i18n="fSilkT">حرير</h3><p data-i18n="fSilkD">فاخر ولامع بملمس انسيابي — الأمثل للفساتين والمناسبات الراقية.</p></div></div>
+      <div class="fab"><div class="swatch s-linen" data-price="من ٤٠ ر.س / م" data-i18n-price="pLinen"></div><div class="fab-body"><h3 data-i18n="fLinenT">كتان</h3><p data-i18n="fLinenD">خفيف وبارد، أنيق وعملي — اختيار رائع لأجواء الصيف الحارة.</p></div></div>
+      <div class="fab"><div class="swatch s-wool" data-price="من ٩٠ ر.س / م" data-i18n-price="pWool"></div><div class="fab-body"><h3 data-i18n="fWoolT">صوف</h3><p data-i18n="fWoolD">دافئ ومتين بمظهر رسمي — مثالي للبدلات والمعاطف الشتوية.</p></div></div>
+      <div class="fab"><div class="swatch s-velvet" data-price="من ١١٠ ر.س / م" data-i18n-price="pVelvet"></div><div class="fab-body"><h3 data-i18n="fVelvetT">قطيفة</h3><p data-i18n="fVelvetD">غني وفخم بملمس مخملي ناعم — يضفي لمسة ملكية على التصاميم.</p></div></div>
+      <div class="fab"><div class="swatch s-satin" data-price="من ٧٠ ر.س / م" data-i18n-price="pSatin"></div><div class="fab-body"><h3 data-i18n="fSatinT">ساتان</h3><p data-i18n="fSatinD">لامع وأنيق بانسيابية عالية — مثالي للفساتين وأزياء السهرة.</p></div></div>
+      <div class="fab"><div class="swatch s-chiffon" data-price="من ٥٥ ر.س / م" data-i18n-price="pChiffon"></div><div class="fab-body"><h3 data-i18n="fChiffonT">شيفون</h3><p data-i18n="fChiffonD">خفيف وشفاف وانسيابي — يضفي رقّة وأنوثة على الفساتين.</p></div></div>
+      <div class="fab"><div class="swatch s-denim" data-price="من ٣٥ ر.س / م" data-i18n-price="pDenim"></div><div class="fab-body"><h3 data-i18n="fDenimT">جينز</h3><p data-i18n="fDenimD">متين وعصري — مناسب للملابس الكاجوال والتصاميم الشبابية.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section id="steps" class="steps">
+  <div class="container">
+    <div class="sec-head">
+      <h2 data-i18n="stepTitle">كيف نعمل</h2>
+      <p data-i18n="stepSub">أربع خطوات بسيطة تفصلك عن قطعتك المثالية.</p>
+    </div>
+    <div class="grid">
+      <div class="step"><div class="num">١</div><h3 data-i18n="step1t">الاستشارة</h3><p data-i18n="step1d">نستمع لرغباتك ونساعدك في اختيار التصميم والقماش المناسب.</p></div>
+      <div class="step"><div class="num">٢</div><h3 data-i18n="step2t">أخذ المقاسات</h3><p data-i18n="step2d">نأخذ مقاساتك بدقة لضمان قصّة مثالية تناسب جسمك.</p></div>
+      <div class="step"><div class="num">٣</div><h3 data-i18n="step3t">التفصيل</h3><p data-i18n="step3d">خياطون محترفون ينفّذون التصميم بأعلى معايير الجودة.</p></div>
+      <div class="step"><div class="num">٤</div><h3 data-i18n="step4t">التسليم</h3><p data-i18n="step4d">نسلّمك القطعة جاهزة مع قياس نهائي للتأكد من الإتقان.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="sec-head">
+      <h2 data-i18n="contTitle">احجز موعدك</h2>
+      <p data-i18n="contSub">املأ النموذج وسنتواصل معك لتحديد موعد الزيارة.</p>
+    </div>
+    <div class="contact-wrap">
+      <form onsubmit="event.preventDefault();this.querySelector('.msg').style.display='block';this.reset();">
+        <div class="field"><label data-i18n="fName">الاسم الكامل</label><input type="text" required data-i18n-ph="phName" placeholder="اكتب اسمك"></div>
+        <div class="field"><label data-i18n="fPhone">رقم الجوال</label><input type="tel" required data-i18n-ph="phPhone" placeholder="05xxxxxxxx"></div>
+        <div class="field"><label data-i18n="fService">نوع الخدمة</label>
+          <select>
+            <option data-i18n="serv1t">تفصيل رجالي</option>
+            <option data-i18n="serv2t">تفصيل نسائي</option>
+            <option data-i18n="serv3t">تعديل وإصلاح</option>
+            <option data-i18n="serv4t">أزياء المناسبات</option>
+          </select>
+        </div>
+        <div class="field"><label data-i18n="fNotes">ملاحظات</label><textarea rows="3" data-i18n-ph="phNotes" placeholder="اكتب تفاصيل طلبك..."></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="fSubmit">إرسال الطلب</button>
+        <div class="msg" data-i18n="fMsg">✓ تم استلام طلبك! سنتواصل معك قريبًا.</div>
+      </form>
+      <div>
+        <div class="info-item"><div class="ic">📍</div><div><h3 data-i18n="iAddrT">العنوان</h3><p data-i18n="iAddrD">شارع الموضة، الرياض، المملكة العربية السعودية</p></div></div>
+        <div class="info-item"><div class="ic">📞</div><div><h3 data-i18n="iPhoneT">الهاتف</h3><p>٠١١ ٤٥٦ ٧٨٩٠ &nbsp;|&nbsp; ٠٥٥ ١٢٣ ٤٥٦٧</p></div></div>
+        <div class="info-item"><div class="ic">🕐</div><div><h3 data-i18n="iHoursT">ساعات العمل</h3><p data-i18n="iHoursD">السبت – الخميس: ٩ صباحًا – ٩ مساءً<br>الجمعة: ٤ – ١٠ مساءً</p></div></div>
+        <div class="info-item"><div class="ic">✉️</div><div><h3 data-i18n="iMailT">البريد الإلكتروني</h3><p>info@dar-alkhayata.com</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo"><span data-i18n="brandA">دار</span> <span class="accent" data-i18n="brandB">الخياطة</span></div>
+    <p data-i18n="footTag">أناقتك تبدأ من تفصيلة واحدة.</p>
+    <div class="social">
+      <a href="#">📷</a><a href="#">📘</a><a href="#">🐦</a><a href="#">💬</a>
+    </div>
+    <small data-i18n="footCopy">© ٢٠٢٦ دار الخياطة — جميع الحقوق محفوظة</small>
+  </div>
+</footer>
+
+<!-- تكبير صورة الهيرو عند النزول -->
+<script>
+  (function(){
+    var bg = document.getElementById('heroBg');
+    if(!bg) return;
+    var MAX = 1.28;                 // أقصى تكبير
+    function update(){
+      var range = window.innerHeight; // يكتمل التكبير خلال أول شاشة
+      var p = Math.min(1, Math.max(0, window.scrollY / range));
+      var scale = 1 + (MAX - 1) * p;
+      bg.style.transform = 'scale(' + scale.toFixed(4) + ')';
+    }
+    update();
+    window.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update);
+  })();
+</script>
+
+<!-- مقص متحرك يفتح عند النزول في الصفحة -->
+<div id="scissors-wrap" aria-hidden="true">
+  <svg id="scissors" viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg">
+    <g id="bladeA">
+      <line x1="50" y1="50" x2="40" y2="8"  class="blade"/>
+      <line x1="50" y1="50" x2="66" y2="84" class="handle"/>
+      <circle cx="70" cy="90" r="9" class="ring"/>
+    </g>
+    <g id="bladeB">
+      <line x1="50" y1="50" x2="60" y2="8"  class="blade"/>
+      <line x1="50" y1="50" x2="34" y2="84" class="handle"/>
+      <circle cx="30" cy="90" r="9" class="ring"/>
+    </g>
+    <circle cx="50" cy="50" r="4" class="screw"/>
+  </svg>
+</div>
+
+<style>
+  #scissors-wrap{
+    position:fixed;bottom:22px;left:22px;z-index:60;
+    width:84px;height:94px;pointer-events:none;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));
+    opacity:.92;
+  }
+  #scissors .blade{stroke:#8d97a3;stroke-width:7;stroke-linecap:round}
+  #scissors .handle{stroke:var(--gold);stroke-width:6;stroke-linecap:round}
+  #scissors .ring{fill:none;stroke:var(--gold);stroke-width:5}
+  #scissors .screw{fill:var(--gold-dark)}
+  #bladeA,#bladeB{transition:transform .15s ease-out}
+  @media(max-width:760px){#scissors-wrap{width:58px;height:66px;bottom:14px;left:14px}}
+</style>
+
+<script>
+  (function(){
+    var A = document.getElementById('bladeA');
+    var B = document.getElementById('bladeB');
+    var CLOSED = 13, OPEN = -11;   // زاوية الإغلاق ← زاوية الفتح
+    function update(){
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      var ang = CLOSED + (OPEN - CLOSED) * p;   // ينقص كلما نزلنا = يفتح
+      A.setAttribute('transform','rotate(' +  ang + ' 50 50)');
+      B.setAttribute('transform','rotate(' + (-ang) + ' 50 50)');
+    }
+    update();
+    window.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update);
+  })();
+</script>
+
+<!-- نظام تعدد اللغات -->
+<script>
+const I18N = {
+  ar:{
+    brandA:"دار", brandB:"الخياطة",
+    navServices:"خدماتنا", navFabrics:"الأقمشة", navSteps:"كيف نعمل", navContact:"تواصل معنا",
+    heroTag:"✦ تفصيل يدوي بإتقان منذ ١٩٩٥",
+    heroTitle:'نخيط لك أناقتك من أفخر <span class="accent">الأقمشة</span>',
+    heroText:"دار خياطة متخصصة في تفصيل الملابس الرجالية والنسائية على المقاس، بأجود أنواع الأقمشة العالمية وأيدٍ ماهرة تهتم بأدق التفاصيل.",
+    heroBtn1:"احجز موعدك الآن", heroBtn2:"تصفّح الأقمشة",
+    servTitle:"خدماتنا", servSub:"نقدّم خدمات خياطة متكاملة تجمع بين الحرفية التقليدية واللمسة العصرية.",
+    serv1t:"تفصيل رجالي", serv1d:"بدلات، قمصان، وثياب رسمية مفصّلة على المقاس بأناقة تليق بك.",
+    serv2t:"تفصيل نسائي", serv2d:"فساتين سهرة، عبايات، وملابس يومية بتصاميم حصرية وأنيقة.",
+    serv3t:"تعديل وإصلاح", serv3d:"تضييق، تقصير، وتعديل المقاسات لتعود ملابسك كأنها جديدة.",
+    serv4t:"أزياء المناسبات", serv4d:"فساتين أفراح وبدلات أعراس بلمسة فاخرة لا تُنسى.",
+    fabTitle:"أنواع الأقمشة", fabSub:"تشكيلة واسعة من أرقى الأقمشة المستوردة لتختار ما يناسب ذوقك ومناسبتك.",
+    fCottonT:"قطن", fCottonD:"ناعم، مريح، ويسمح بمرور الهواء — مثالي للملابس اليومية والصيفية.",
+    fSilkT:"حرير", fSilkD:"فاخر ولامع بملمس انسيابي — الأمثل للفساتين والمناسبات الراقية.",
+    fLinenT:"كتان", fLinenD:"خفيف وبارد، أنيق وعملي — اختيار رائع لأجواء الصيف الحارة.",
+    fWoolT:"صوف", fWoolD:"دافئ ومتين بمظهر رسمي — مثالي للبدلات والمعاطف الشتوية.",
+    fVelvetT:"قطيفة", fVelvetD:"غني وفخم بملمس مخملي ناعم — يضفي لمسة ملكية على التصاميم.",
+    fSatinT:"ساتان", fSatinD:"لامع وأنيق بانسيابية عالية — مثالي للفساتين وأزياء السهرة.",
+    fChiffonT:"شيفون", fChiffonD:"خفيف وشفاف وانسيابي — يضفي رقّة وأنوثة على الفساتين.",
+    fDenimT:"جينز", fDenimD:"متين وعصري — مناسب للملابس الكاجوال والتصاميم الشبابية.",
+    pCotton:"من ٢٥ ر.س / م", pSilk:"من ١٢٠ ر.س / م", pLinen:"من ٤٠ ر.س / م", pWool:"من ٩٠ ر.س / م",
+    pVelvet:"من ١١٠ ر.س / م", pSatin:"من ٧٠ ر.س / م", pChiffon:"من ٥٥ ر.س / م", pDenim:"من ٣٥ ر.س / م",
+    stepTitle:"كيف نعمل", stepSub:"أربع خطوات بسيطة تفصلك عن قطعتك المثالية.",
+    step1t:"الاستشارة", step1d:"نستمع لرغباتك ونساعدك في اختيار التصميم والقماش المناسب.",
+    step2t:"أخذ المقاسات", step2d:"نأخذ مقاساتك بدقة لضمان قصّة مثالية تناسب جسمك.",
+    step3t:"التفصيل", step3d:"خياطون محترفون ينفّذون التصميم بأعلى معايير الجودة.",
+    step4t:"التسليم", step4d:"نسلّمك القطعة جاهزة مع قياس نهائي للتأكد من الإتقان.",
+    contTitle:"احجز موعدك", contSub:"املأ النموذج وسنتواصل معك لتحديد موعد الزيارة.",
+    fName:"الاسم الكامل", phName:"اكتب اسمك", fPhone:"رقم الجوال", phPhone:"05xxxxxxxx",
+    fService:"نوع الخدمة", fNotes:"ملاحظات", phNotes:"اكتب تفاصيل طلبك...",
+    fSubmit:"إرسال الطلب", fMsg:"✓ تم استلام طلبك! سنتواصل معك قريبًا.",
+    iAddrT:"العنوان", iAddrD:"شارع الموضة، الرياض، المملكة العربية السعودية",
+    iPhoneT:"الهاتف", iHoursT:"ساعات العمل", iHoursD:"السبت – الخميس: ٩ صباحًا – ٩ مساءً<br>الجمعة: ٤ – ١٠ مساءً",
+    iMailT:"البريد الإلكتروني",
+    footTag:"أناقتك تبدأ من تفصيلة واحدة.", footCopy:"© ٢٠٢٦ دار الخياطة — جميع الحقوق محفوظة"
+  },
+  en:{
+    brandA:"Khayata", brandB:"House",
+    navServices:"Services", navFabrics:"Fabrics", navSteps:"How We Work", navContact:"Contact",
+    heroTag:"✦ Handcrafted tailoring since 1995",
+    heroTitle:'We tailor your elegance from the finest <span class="accent">fabrics</span>',
+    heroText:"A tailoring house specialized in made-to-measure menswear and womenswear, using the world's finest fabrics and skilled hands that care about every detail.",
+    heroBtn1:"Book an Appointment", heroBtn2:"Browse Fabrics",
+    servTitle:"Our Services", servSub:"Complete tailoring services blending traditional craftsmanship with a modern touch.",
+    serv1t:"Men's Tailoring", serv1d:"Made-to-measure suits, shirts, and formal wear with elegance that suits you.",
+    serv2t:"Women's Tailoring", serv2d:"Evening gowns, abayas, and everyday wear with exclusive, elegant designs.",
+    serv3t:"Alterations & Repairs", serv3d:"Taking in, shortening, and resizing to make your clothes feel brand new.",
+    serv4t:"Occasion Wear", serv4d:"Wedding dresses and groom's suits with an unforgettable luxurious touch.",
+    fabTitle:"Fabric Types", fabSub:"A wide selection of the finest imported fabrics to match your taste and occasion.",
+    fCottonT:"Cotton", fCottonD:"Soft, comfortable, and breathable — ideal for everyday and summer wear.",
+    fSilkT:"Silk", fSilkD:"Luxurious and glossy with a flowing feel — perfect for gowns and fine occasions.",
+    fLinenT:"Linen", fLinenD:"Light and cool, elegant and practical — a great choice for hot summer days.",
+    fWoolT:"Wool", fWoolD:"Warm and durable with a formal look — ideal for suits and winter coats.",
+    fVelvetT:"Velvet", fVelvetD:"Rich and lavish with a soft pile — adds a royal touch to any design.",
+    fSatinT:"Satin", fSatinD:"Glossy and elegant with high drape — perfect for gowns and evening wear.",
+    fChiffonT:"Chiffon", fChiffonD:"Light, sheer, and flowing — adds delicacy and femininity to dresses.",
+    fDenimT:"Denim", fDenimD:"Durable and modern — suited for casual wear and youthful designs.",
+    pCotton:"From 25 SAR / m", pSilk:"From 120 SAR / m", pLinen:"From 40 SAR / m", pWool:"From 90 SAR / m",
+    pVelvet:"From 110 SAR / m", pSatin:"From 70 SAR / m", pChiffon:"From 55 SAR / m", pDenim:"From 35 SAR / m",
+    stepTitle:"How We Work", stepSub:"Four simple steps stand between you and your perfect piece.",
+    step1t:"Consultation", step1d:"We listen to your wishes and help you choose the right design and fabric.",
+    step2t:"Measurements", step2d:"We take your measurements precisely to ensure a perfect fit.",
+    step3t:"Tailoring", step3d:"Professional tailors bring the design to life with the highest quality standards.",
+    step4t:"Delivery", step4d:"We hand you the finished piece with a final fitting to ensure perfection.",
+    contTitle:"Book an Appointment", contSub:"Fill in the form and we'll reach out to schedule your visit.",
+    fName:"Full Name", phName:"Enter your name", fPhone:"Phone Number", phPhone:"05xxxxxxxx",
+    fService:"Service Type", fNotes:"Notes", phNotes:"Write your request details...",
+    fSubmit:"Send Request", fMsg:"✓ Your request has been received! We'll contact you soon.",
+    iAddrT:"Address", iAddrD:"Fashion Street, Riyadh, Saudi Arabia",
+    iPhoneT:"Phone", iHoursT:"Working Hours", iHoursD:"Sat – Thu: 9 AM – 9 PM<br>Fri: 4 – 10 PM",
+    iMailT:"Email",
+    footTag:"Your elegance begins with a single stitch.", footCopy:"© 2026 Khayata House — All rights reserved"
+  },
+  sv:{
+    brandA:"Skrädderi", brandB:"Huset",
+    navServices:"Tjänster", navFabrics:"Tyger", navSteps:"Så jobbar vi", navContact:"Kontakt",
+    heroTag:"✦ Hantverksskrädderi sedan 1995",
+    heroTitle:'Vi skräddarsyr din elegans i de finaste <span class="accent">tygerna</span>',
+    heroText:"Ett skrädderi specialiserat på måttsydda herr- och damkläder, med världens finaste tyger och skickliga händer som bryr sig om varje detalj.",
+    heroBtn1:"Boka tid", heroBtn2:"Bläddra bland tyger",
+    servTitle:"Våra tjänster", servSub:"Kompletta skrädderitjänster som förenar traditionellt hantverk med en modern touch.",
+    serv1t:"Herrskrädderi", serv1d:"Måttsydda kostymer, skjortor och formella plagg med elegans som passar dig.",
+    serv2t:"Damskrädderi", serv2d:"Aftonklänningar, abayor och vardagsplagg med exklusiva, eleganta design.",
+    serv3t:"Ändringar & lagning", serv3d:"Insläpp, förkortning och anpassning så att dina plagg känns helt nya.",
+    serv4t:"Festkläder", serv4d:"Brudklänningar och brudgumskostymer med en oförglömlig lyxig touch.",
+    fabTitle:"Tygtyper", fabSub:"Ett brett urval av de finaste importerade tygerna för din smak och ditt tillfälle.",
+    fCottonT:"Bomull", fCottonD:"Mjuk, bekväm och andas — perfekt för vardags- och sommarplagg.",
+    fSilkT:"Siden", fSilkD:"Lyxigt och glansigt med en flytande känsla — perfekt för klänningar och fina tillfällen.",
+    fLinenT:"Linne", fLinenD:"Lätt och svalt, elegant och praktiskt — ett utmärkt val för varma sommardagar.",
+    fWoolT:"Ull", fWoolD:"Varmt och slitstarkt med ett formellt utseende — perfekt för kostymer och vinterrockar.",
+    fVelvetT:"Sammet", fVelvetD:"Rikt och påkostat med mjuk lugg — ger en kunglig touch åt varje design.",
+    fSatinT:"Satin", fSatinD:"Glansigt och elegant med fint fall — perfekt för klänningar och aftonplagg.",
+    fChiffonT:"Chiffong", fChiffonD:"Lätt, genomskinligt och flytande — ger klänningar finhet och femininitet.",
+    fDenimT:"Denim", fDenimD:"Slitstarkt och modernt — passar för fritidskläder och ungdomliga design.",
+    pCotton:"Från 25 SAR / m", pSilk:"Från 120 SAR / m", pLinen:"Från 40 SAR / m", pWool:"Från 90 SAR / m",
+    pVelvet:"Från 110 SAR / m", pSatin:"Från 70 SAR / m", pChiffon:"Från 55 SAR / m", pDenim:"Från 35 SAR / m",
+    stepTitle:"Så jobbar vi", stepSub:"Fyra enkla steg står mellan dig och ditt perfekta plagg.",
+    step1t:"Konsultation", step1d:"Vi lyssnar på dina önskemål och hjälper dig välja rätt design och tyg.",
+    step2t:"Mått", step2d:"Vi tar dina mått noggrant för att säkerställa en perfekt passform.",
+    step3t:"Skräddarsöm", step3d:"Professionella skräddare förverkligar designen med högsta kvalitetsstandard.",
+    step4t:"Leverans", step4d:"Vi överlämnar det färdiga plagget med en sista provning för att säkra perfektionen.",
+    contTitle:"Boka tid", contSub:"Fyll i formuläret så hör vi av oss för att boka ditt besök.",
+    fName:"Fullständigt namn", phName:"Skriv ditt namn", fPhone:"Telefonnummer", phPhone:"05xxxxxxxx",
+    fService:"Typ av tjänst", fNotes:"Anteckningar", phNotes:"Skriv detaljer om din beställning...",
+    fSubmit:"Skicka förfrågan", fMsg:"✓ Din förfrågan har tagits emot! Vi kontaktar dig snart.",
+    iAddrT:"Adress", iAddrD:"Modegatan, Riyadh, Saudiarabien",
+    iPhoneT:"Telefon", iHoursT:"Öppettider", iHoursD:"Lör – Tor: 9 – 21<br>Fre: 16 – 22",
+    iMailT:"E-post",
+    footTag:"Din elegans börjar med ett enda stygn.", footCopy:"© 2026 Skrädderihuset — Alla rättigheter förbehållna"
+  }
+};
+
+function setLang(lang){
+  var t = I18N[lang]; if(!t) return;
+  document.documentElement.lang = lang;
+  document.documentElement.dir  = (lang === 'ar') ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n'); if(t[k] != null) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-ph'); if(t[k] != null) el.placeholder = t[k];
+  });
+  document.querySelectorAll('[data-i18n-price]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-price'); if(t[k] != null) el.setAttribute('data-price', t[k]);
+  });
+  document.querySelectorAll('.lang-switch button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+  try{ localStorage.setItem('khayata-lang', lang); }catch(e){}
+}
+
+document.querySelectorAll('.lang-switch button').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+});
+
+(function(){
+  var saved = 'ar';
+  try{ saved = localStorage.getItem('khayata-lang') || 'ar'; }catch(e){}
+  setLang(saved);
+})();
+</script>
+
+</body>
+</html>
